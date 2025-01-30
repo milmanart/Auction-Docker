@@ -35,7 +35,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         store: MongoStore.create({
-            mongoUrl: 'mongodb://mongo:27017/auction-system', // ✅ Убрали localhost
+            mongoUrl: 'mongodb://mongo:27017/auction-system', 
             ttl: 14 * 24 * 60 * 60
         })
     })
