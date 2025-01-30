@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel aukcyjny</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<%- include('partials/header') %>
+<div class="container">
+    <% if (success_msg) { %>
+        <div class="success"><%= success_msg %></div>
+    <% } %>
+    <% if (error_msg) { %>
+        <div class="error"><%= error_msg %></div>
+    <% } %>
+    <h2>Witaj, <%= user.email %>!</h2>
+    <p>To jest twoja strona z aukcjami, na której możesz przeglądać, dodawać, edytować i usuwać swoje aukcje.</p>
+    <a href="/auctions/my-auctions" class="btn">Moje aukcje</a>
+    <a href="/auctions/add" class="btn">Dodaj aukcję</a>
+</div>
+</body>
+</html>

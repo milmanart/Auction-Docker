@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moje aukcje</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<%- include('../partials/header') %>
+<div class="container">
+    <% if (success_msg) { %>
+        <div class="success"><%= success_msg %></div>
+    <% } %>
+    <% if (error_msg) { %>
+        <div class="error"><%= error_msg %></div>
+    <% } %>
+    <h2>Moje aukcje</h2>
+    <ul>
+        <% auctions.forEach(function(auction) { %>
+            <li>
+                <div>
+                    <strong><%= auction.title %></strong><br>
+                    <%= auction.description %><br>
+                    Cena początkowa: <%= auction.initialPrice %> PLN<br>
+                    Cena bieżąca: <%= auction.currentPrice %> PLN<br>
+                    <% if (auction.user) { %>
+                        Sprzedawca: <%= auction.user.username %><br>
+                    <% } %>
+                    <% if (auction.buyer) { %>
+                        Kupił: <%= auction.buyer.username %><br>
+                    <% } %>
+                </div>
+                <div>
+                    <a href="/auctions/edit/<%= auction._id %>" class="btn">Edytuj</a>
+                    <form action="/auctions/delete/<%= auction._id %>?_method=DELETE" method="POST" style="display:inline;">
+                        <button type="submit">Usuń</button>
+                    </form>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+</div>
+</body>
+</html>
